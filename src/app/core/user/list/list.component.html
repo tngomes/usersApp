@@ -1,0 +1,76 @@
+<mat-form-field style="margin-left: 20px;">
+  <mat-label>Filtro</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. NomeUsuario" #input>
+</mat-form-field>
+<button mat-raised-button color="primary" style="margin-left: 20px;" (click)="openDialog(undefined)">Cadastrar
+  Usuário</button>
+<div class="mat-elevation-z8" style="display: grid;">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName </th>
+      <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+    </ng-container>
+    <!-- Senha Column -->
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Senha </th>
+      <td mat-cell *matCellDef="let row"> {{row.password}} </td>
+    </ng-container>
+    <!-- enabled Column -->
+    <ng-container matColumnDef="is_enabled">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </th>
+      <td mat-cell *matCellDef="let row"> {{row.is_enabled ? 'Ativo': 'Inativo'}} </td>
+    </ng-container>
+    <!-- Data Cadastro Column -->
+    <ng-container matColumnDef="register_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Cadastro </th>
+      <td mat-cell *matCellDef="let row"> {{row.register_date | date}} </td>
+    </ng-container>
+    <!-- nome Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+    <!-- sobrenome Column -->
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sobrenome </th>
+      <td mat-cell *matCellDef="let row"> {{row.surname}} </td>
+    </ng-container>
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+    <!-- phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
+    </ng-container>
+    <!-- phone Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let row" style="display: table-cell;vertical-align: inherit;">
+        <button mat-raised-button color="primary" (click)="openDialog(row)">Editar</button>
+        <button mat-raised-button color="warn" style="margin-left: 5px;"
+          (click)="openDeleteModal(row.id)">Excluir</button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Lista Vazia!</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

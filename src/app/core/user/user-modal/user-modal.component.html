@@ -1,0 +1,40 @@
+<h3>{{titulo}}</h3>
+<form [formGroup]="formUsuario">
+
+    <mat-form-field appearance="fill">
+        <mat-label>UserName</mat-label>
+        <input matInput name="username" id="username" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput name="password" id="password" formControlName="password">
+    </mat-form-field>
+    <mat-slide-toggle formControlName="is_enabled" color="primary">Ativo</mat-slide-toggle>
+    <mat-form-field appearance="fill" style="margin-top: 10px;">
+        <mat-label>Nome</mat-label>
+        <input matInput name="name" id="name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput name="surname" id="surname" formControlName="surname">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" id="email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input matInput name="phone" id="phone" formControlName="phone">
+    </mat-form-field>
+
+
+    <div class="divBtn">
+        <button mat-raised-button color="primary" (click)="onSubmit()">{{this.id > 0 ? 'Editar': 'Cadastrar'}}</button>
+        <button mat-raised-button color="accent" (click)="this.dialogRef.close();"
+            style="margin-left: 10px;">Cancelar</button>
+    </div>
+</form>

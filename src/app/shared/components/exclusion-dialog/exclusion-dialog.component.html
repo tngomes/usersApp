@@ -1,0 +1,26 @@
+<div>
+    <h4 style="text-align: center;">{{title}}</h4>
+    <div>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="exclusion-dialog ">
+            <div align="center" fxLayout="row" fxLayoutAlign="center center">
+                <mat-card class="mat-elevation-z0">
+                    <div class="exclusion-message">
+                        <span>{{message}}</span>
+                    </div>
+                    <mat-card-content fxLayout="column" fxLayoutAlign="space-around stretch">
+                        <div fxLayout="row" fxLayoutAlign="space-around center" style="display: flex;margin-top: 20px;">
+                            <div fxLayout="row" fxLayoutAlign="end end">
+                                <button mat-button color="primary" (click)="onConfirm()">
+                                    <mat-icon>check_circle</mat-icon>&nbsp;Confirmar
+                                </button>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="end end">
+                                <button mat-button color="accent" (click)="onCancel()">
+                                    <mat-icon>cancel</mat-icon>&nbsp;Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
